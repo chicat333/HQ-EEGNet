@@ -63,7 +63,7 @@ HQ-EEGNet starts from the **preprocessed derivatives** released with ds004504. A
 5. **Cohort selection:** loaded `participants.tsv`, kept AD (label 1) and CN (label 0) subjects, dropped FTD.
 6. **Channel standardisation:** all recordings restricted to the same 19 channels in a fixed order.
 7. **Downsampling to 64 Hz.** This reduces computational load while keeping the full clinically relevant band (Nyquist = 32 Hz, above the 30 Hz analysis ceiling).
-8. **Epoching:** each continuous recording is segmented into fixed-length epochs. <!-- TODO: confirm epoch duration and overlap from the preprocessing script before publishing -->Subjects keep their natural number of epochs, which varies with recording length. These are not truncated, but padded and masked at batch time.
+8. **Epoching:** each continuous recording is segmented into fixed-length epochs. Subjects keep their natural number of epochs, which varies with recording length. These are not truncated, but padded and masked at batch time.
 9. **Per-epoch, per-channel filtering:**
    - 50 Hz notch filter (IIR, Q = 30). It is guarded by a Nyquist check, so at 64 Hz it is bypassed and line noise is handled by the low-pass edge below.
    - **4th-order zero-phase Butterworth band-pass, 1–30 Hz** (`filtfilt`), covering the delta, theta, alpha and beta bands.
